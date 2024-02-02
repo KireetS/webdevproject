@@ -2,7 +2,7 @@
 import Image from "next/image";
 import SignupForm from "./signup-form";
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/button";
 import SigninForm from "./signin-form";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +32,7 @@ const SignupPage = () => {
                         Welcome To <br />
                         <span className="text-primary">Website{"'"}s Name</span>
                     </h1>
-                    <Button onClick={() => {setToggle(!toggle)}} variant={"default"} className="scale-105">
+                    <Button onClick={() => {setToggle(!toggle)}}  className="scale-105">
                         {!toggle ? "Sign In Instead" : "Sign Up Instead"}
                     </Button>
                 </div>
