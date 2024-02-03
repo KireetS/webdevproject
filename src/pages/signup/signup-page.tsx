@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
-import SignupForm from "./signup-form";
+import SignUpPage from "./signup-form";
 import React, { useState } from "react";
 import Button from "@/components/ui/button";
-import SigninForm from "./signin-form";
+import SignInPage from "./signin-form";
 import { cn } from "@/lib/utils";
+
 
 const SignupPage = () => {
     const [toggle, setToggle] = useState(false);
@@ -12,9 +13,9 @@ const SignupPage = () => {
         <div className={cn(`min-w-screen flex min-h-screen`, toggle ? "flex-row" : "flex-row-reverse")}>
             <div className="xl:py-0 py-24 xl:px-16 px-4 xl:basis-1/2 basis-full flex justify-center items-center flex-col">
                 {!toggle ? (
-                    <SignupForm className="space-y-6 w-full max-w-[380px] border-primary/50 hover:border-primary border hover:shadow-2xl hover:shadow-primary/20 rounded-xl lg:p-12 lg:pt-10 p-6 pt-5 transition-all duration-300 ease-in-out" />
+                    <SignUpPage />
                 ) : (
-                    <SigninForm className="space-y-6 w-full max-w-[380px] border-primary/50 hover:border-primary border hover:shadow-2xl hover:shadow-primary/20 rounded-xl lg:p-12 lg:pt-10 p-6 pt-5 transition-all duration-300 ease-in-out" />
+                    <SignInPage />
                 )}
             </div>
             <div className="basis-1/2 relative min-h-screen h-full xl:flex hidden">
