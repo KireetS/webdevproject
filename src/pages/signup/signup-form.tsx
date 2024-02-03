@@ -1,61 +1,24 @@
-"use client";
-import React, { ComponentProps } from "react";
-import { useForm, SubmitHandler, FormProps } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Button  from "@/components/ui/button";
-import {
-    Form,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import React from 'react';
+import FormComponent from '@/components/ui/form';
 
-const formSchema = z.object({
-    username: z
-        .string()
-        .min(3, { message: "Username must be at least 3 characters." }),
-    name: z
-        .string()
-        .min(3, { message: "Name must be at least 3 characters." })
-        .max(200, { message: "Name must be at most 200 characters." }),
-    email: z
-        .string()
-        .email({ message: "Email must be in a valid email format." }),
-    password: z
-        .string()
-        .min(8, { message: "Password must be atleast 8 characters." }),
-});
-
-interface SignupFormProps {
-    className?: string;
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
 }
 
-const SignupForm: React.FunctionComponent<SignupFormProps> = (
-    props: SignupFormProps
-) => {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            username: "",
-            email: "",
-            password: "",
-            name: "",
-        },
-    });
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // TODO: register user here using the "values"
-        console.log(values);
-    }
-    return (
-        <>
-        <Form onSubmit=
-            {()=>{
+const SignUpPage: React.FC = () => {
+  const handleSignUp = (formData: SignUpFormData) => {
+    // Handle sign-up form submission
+    console.log('Sign Up form submitted:', formData);
+  };
 
-            }}
-        >
-            <h1></h1>
-        </Form>
-    </>
-    );
+  return (
+    <div>
+      <h1>Sign Up</h1>
+      <FormComponent fields={['name', 'email', 'password']} onSubmit={handleSignUp} submitButtonText="Sign Up" />
+    </div>
+  );
 };
 
-export default SignupForm;
+export default SignUpPage;
