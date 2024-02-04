@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "./button";
 export type signUpFormType ={
@@ -16,18 +16,16 @@ const SignIn =()=> {
         formState:{errors,isSubmitSuccessful}
     }=useForm();
 
-    useEffect(()=>{
+
+    const signInform : SubmitHandler<FieldValues> = async(data,event) => {
+        console.log("Logging data", data);
+        console.log(event);
         if(isSubmitSuccessful){
             reset({
                 email:"",
                 Password:"",                
             })
         }
-    },[reset,isSubmitSuccessful]);
-
-    const signInform : SubmitHandler<FieldValues> = async(data,event) => {
-        console.log("Logging data", data);
-        console.log(event)
         try{
             console.log(data)
         }

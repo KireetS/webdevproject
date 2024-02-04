@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { FieldValue, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "./button";
 export type signUpFormType ={
@@ -15,7 +15,10 @@ const SignUp =()=>{
     formState:{errors,isSubmitSuccessful}
 }=useForm();
 
-useEffect(()=>{
+
+const signupform : SubmitHandler<FieldValues> = async(data,event) => {
+    console.log("Logging data", data);
+    console.log(event);
     if(isSubmitSuccessful){
         reset({
             UserName:'',
@@ -23,11 +26,6 @@ useEffect(()=>{
             Password:"",                
         })
     }
-},[reset,isSubmitSuccessful]);
-
-const signupform : SubmitHandler<FieldValues> = async(data,event) => {
-    console.log("Logging data", data);
-    console.log(event)
     try{
         console.log(data)
     }
@@ -92,8 +90,8 @@ return(
                     )} 
                 </div>
                 {/* Button */}
-                <Button className="flex justify-center " type="submit" >
-                    Sign In
+                <Button className="flex justify-center"  type = "submit" >
+                    Sign Up
                 </Button>
             </div>
             
